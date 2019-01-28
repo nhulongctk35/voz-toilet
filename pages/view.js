@@ -15,7 +15,7 @@ class View extends Component {
     return (
       <div className={'container mx-auto'}>
         <Nav />
-        <h2 className="text-4xl mt-10 mb-5">{title}</h2>
+        <h2 className="text-4xl mt-10 mb-5 ml-2">{title}</h2>
         <blockquote className="bg-grey-lighter p-2 border-l-4 text-2xl leading-normal">
           <div className="my-2" dangerouslySetInnerHTML={{ __html: content }} />
         </blockquote>

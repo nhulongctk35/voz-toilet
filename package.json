@@ -3,10 +3,9 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "now-build": "next build && next export -o dist"
+    "now-build": "next build"
   },
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^7.0.2",
     "react": "^16.7.0",
@@ -18,7 +17,6 @@
   "author": "Long Tran <nhulongctk10@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^1.15.3",
-    "redux-devtools-extension": "^2.13.7"
+    "prettier": "^1.15.3"
   }
 }
