@@ -11,12 +11,13 @@ export default class MyDocument extends Document {
     return (
       <html lang="vi">
         <Head>
+          <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" />
           <link
             href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
             rel="stylesheet"
           />
         </Head>
-        <body className="font-mono all:text-sm sm:text-lg text-black">
+        <body className="font-mono all:text-sm sm:text-lg text-black" style={{fontFamily: 'Inconsolata, monospace'}}>
           <Main />
           <NextScript />
         </body>

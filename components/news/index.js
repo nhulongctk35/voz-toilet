@@ -2,7 +2,7 @@ import React from 'react';
 
 function SingleNew({ data, rank }) {
   return (
-    <li className="mb-4 flex">
+    <li className="mb-1 flex">
       <span className="mr-1">{`${rank}. `} </span>
       <div className="flex-1">
         <a href={`/view?id=${data.id}`} className="no-underline text-black">
