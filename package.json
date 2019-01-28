@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "now-build": "next build && next export -o dist"
+  },
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^7.0.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "name": "voz-toilet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Long Tran <nhulongctk10@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.15.3",
+    "redux-devtools-extension": "^2.13.7"
+  }
+}
