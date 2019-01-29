@@ -7,6 +7,9 @@ const newService = {
     ),
   getDetail: postId =>
     fetch(`https://p.voz.vn/posts/${postId}`).then(res => res.json()),
+
+  getComments: postId =>
+    fetch(`https://p.voz.vn/posts/${postId}/comments`).then(res => res.json()),
 };
 
 export default newService;

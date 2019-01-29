@@ -12,8 +12,17 @@ class View extends Component {
     };
   }
 
+  state = { comments: [] };
+
+  componentDidMount() {
+    newService
+      .getComments(this.props.data.id)
+      .then(res => this.setState({ comments: res }));
+  }
+
   render() {
     const { title, content } = this.props.data;
+    const { comments } = this.state;
     return (
       <div className="container mx-auto">
         <Meta title={title} desc={title} />
@@ -22,6 +31,19 @@ class View extends Component {
         <blockquote className="bg-grey-lighter p-2 border-l-4 text-2xl leading-normal">
           <div className="my-2" dangerouslySetInnerHTML={{ __html: content }} />
         </blockquote>
+        <br/>
+        <h2>COMMENTS</h2>
+        <ul className="list-reset">
+          {comments &&
+            comments.map(comment => (
+              <li key={comment.id} className="py-4 px-2">
+                <strong className="mb-2">{comment.user_meta.username}</strong>
+                <blockquote className="bg-grey-lighter p-2 border-l-4 text-2xl leading-normal">
+                  <div dangerouslySetInnerHTML={{ __html: comment.content }} />
+                </blockquote>
+              </li>
+            ))}
+        </ul>
       </div>
     );
   }
