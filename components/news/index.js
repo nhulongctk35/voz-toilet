@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LoadMoreContext from '../LoadMore.context';
+
 function SingleNew({ data, rank }) {
   return (
     <li className="py-4 px-2 hover:bg-grey-darker">
@@ -8,18 +10,32 @@ function SingleNew({ data, rank }) {
         className="group no-underline text-white text-2xl group-hover:bg-grey-darker"
       >
         <div className="flex">
-          <span className="mr-1 opacity-50">{`${rank}. `} </span>
+          <span className="mr-1 opacity-50">{`${rank}. `}</span>
           <div className="flex-1">
             <span>{data.title}</span>
             <p className="text-xs pt-1 opacity-50 text-lg pl-1">
               <span>{data.created}</span>
               <span> | </span>
-              <span>{data.totalComments} comments</span>
+              {data.totalComments > 0 && (
+                <span>{data.totalComments} comments</span>
+              )}
             </p>
           </div>
         </div>
       </a>
     </li>
+  );
+}
+
+function LoadMoreButton() {
+  return (
+    <LoadMoreContext.Consumer>
+      {({ onLoadMore }) => (
+        <div className="pl-16" onClick={onLoadMore}>
+          Load more...
+        </div>
+      )}
+    </LoadMoreContext.Consumer>
   );
 }
 
@@ -29,6 +45,9 @@ export default function NewList({ news = [] }) {
       {news.map((singleNew, index) => (
         <SingleNew key={singleNew.id} data={singleNew} rank={index + 1} />
       ))}
+      <li className="py-4 px-2 hover:bg-grey-darker">
+        <LoadMoreButton />
+      </li>
     </ul>
   );
 }

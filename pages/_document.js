@@ -16,7 +16,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="font-mono all:text-sm sm:text-lg" style={{fontFamily: 'Inconsolata, monospace'}}>
+        <body className="font-mono all:text-sm sm:text-lg">
           <Main />
           <NextScript />
         </body>

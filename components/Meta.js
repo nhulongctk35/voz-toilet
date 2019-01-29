@@ -1,24 +1,20 @@
 import React from 'react';
 import Head from 'next/head';
 
-function Meta({ title }) {
+function Meta({ title, desc }) {
   return (
     <div>
       <Head>
         <title>{title}</title>
+        <meta name="description" id="root-desc" content={desc} />
       </Head>
-      <style global jsx>{`
-        body {
-          background-color: rgb(30, 34, 39);
-          color: #fff;
-        }
-      `}</style>
     </div>
   );
 }
 
 Meta.defaultProps = {
   title: 'VOZ Toilet News',
+  desc: 'The fastest way to read news on the VOZ site',
 };
 
 export default Meta;
