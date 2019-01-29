@@ -7,6 +7,22 @@ import LoadMoreContext from '../components/LoadMore.context';
 
 import newService from '../services/new.service';
 
+function getQueryStringValue(
+  url = 'https://p.voz.vn/feed/?box=diembao&page=3'
+) {
+  if (!url) return;
+
+  const urlSegment = url
+    .split('?')[1]
+    .split('&')
+    .reduce((acc, value) => {
+      const [key, content] = value.split('=');
+      return acc.concat({ [key]: content });
+    }, []);
+
+  return urlSegment;
+}
+
 function reformatResData(results = []) {
   return results.reduce((acc, item) => {
     const date = new Date(item.created);
@@ -28,22 +44,21 @@ class App extends React.Component {
     const data = await newService.getAlls(id, page);
     const items = reformatResData(data.results);
 
-    return { items};
-  }
-
-  handleLoadMore = () => {
-    console.log('#loadmore')
+    return { items, nextPage: data.next };
   }
 
   render() {
     const { items, ...rest } = this.props;
+    const [box, page] = getQueryStringValue(this.props.nextPage);
 
     return (
       <div className="container mx-auto">
         <Meta />
         <Nav />
         <div className="mt-3">
-          <LoadMoreContext.Provider value={{loadMore: this.handleLoadMore}}>
+          <LoadMoreContext.Provider
+            value={{ id: box['box'], page: page['page'] }}
+          >
             <NewList news={items} {...rest} />
           </LoadMoreContext.Provider>
         </div>

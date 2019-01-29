@@ -1,7 +1,7 @@
 import React from 'react';
 
 const loadMoreContext = React.createContext({
-  loadMore: () => {}
+  url: () => {}
 });
 
 export default loadMoreContext;

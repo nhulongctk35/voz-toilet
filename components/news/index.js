@@ -30,10 +30,10 @@ function SingleNew({ data, rank }) {
 function LoadMoreButton() {
   return (
     <LoadMoreContext.Consumer>
-      {({ onLoadMore }) => (
-        <div className="pl-16" onClick={onLoadMore}>
+      {({ id, page }) => (
+        <a className="pl-12 text-white text-2xl no-underline" href={`/index?id=${id}&page=${page}`}>
           Load more...
-        </div>
+        </a>
       )}
     </LoadMoreContext.Consumer>
   );
